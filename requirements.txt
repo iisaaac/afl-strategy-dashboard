@@ -1,3 +1,4 @@
+lxml>=5.0
 pandas>=2.0
 plotly>=5.20
 requests>=2.31
