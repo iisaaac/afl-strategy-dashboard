@@ -1,0 +1,1 @@
+"""Multipage dashboard views."""

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AFL Strategy &amp; Fan Growth Analytics Brief</title>
+<style>
+    :root {
+        --background: #F7F8FA;
+        --surface: #FFFFFF;
+        --primary: #0B1F3A;
+        --accent: #C8A24A;
+        --text: #172033;
+        --muted: #5B6472;
+        --border: #E1E5EA;
+        --risk: #B7791F;
+        --opportunity: #1F7A5C;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background: var(--background);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.45;
+    }
+    .brief {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px;
+    }
+    .header {
+        border-bottom: 3px solid var(--accent);
+        padding-bottom: 18px;
+        margin-bottom: 22px;
+    }
+    .eyebrow {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    h1 {
+        color: var(--primary);
+        font-size: 34px;
+        line-height: 1.08;
+        margin: 6px 0 8px;
+    }
+    h2 {
+        color: var(--primary);
+        font-size: 18px;
+        margin: 24px 0 10px;
+    }
+    p { margin: 0 0 10px; }
+    .subtitle {
+        color: var(--muted);
+        font-size: 15px;
+        max-width: 850px;
+    }
+    .meta {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin-top: 18px;
+    }
+    .meta-item, .metric-card, .section, .caveat {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+    }
+    .meta-item {
+        padding: 10px 12px;
+        min-height: 70px;
+    }
+    .label {
+        color: var(--muted);
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+    .value {
+        color: var(--primary);
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+    .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .metric-card {
+        padding: 14px;
+        min-height: 96px;
+    }
+    .metric-card .value {
+        font-size: 20px;
+        overflow-wrap: anywhere;
+    }
+    .section {
+        padding: 16px;
+        margin-top: 12px;
+    }
+    ol {
+        margin: 0;
+        padding-left: 22px;
+    }
+    li { margin-bottom: 8px; }
+    .table-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 12px;
+    }
+    th, td {
+        border-bottom: 1px solid var(--border);
+        padding: 7px 6px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        color: var(--muted);
+        font-size: 11px;
+        text-transform: uppercase;
+    }
+    .caveat {
+        border-left: 4px solid var(--accent);
+        color: var(--muted);
+        margin-top: 18px;
+        padding: 14px 16px;
+    }
+    .sources {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 14px;
+    }
+    @media print {
+        body { background: #FFFFFF; }
+        .brief { padding: 18px; }
+        .section, .metric-card, .meta-item, .caveat { break-inside: avoid; }
+    }
+    @media (max-width: 860px) {
+        .meta, .metrics, .table-grid { grid-template-columns: 1fr; }
+        .brief { padding: 18px; }
+    }
+</style>
+</head>
+<body>
+<main class="brief">
+    <header class="header">
+        <div class="eyebrow">Executive strategy brief</div>
+        <h1>AFL Strategy &amp; Fan Growth Analytics Brief</h1>
+        <p class="subtitle">Public-data prototype assessing fixture equity, travel load, competitive balance, venue utilisation, fan-growth opportunity and commercial activation signals.</p>
+        <div class="meta"><div class="meta-item"><span class="label">Project</span><span class="value">AFL Strategy &amp; Fan Growth Analytics Dashboard</span></div><div class="meta-item"><span class="label">Season</span><span class="value">2025</span></div><div class="meta-item"><span class="label">Phase</span><span class="value">Home-and-away season</span></div><div class="meta-item"><span class="label">Team filter</span><span class="value">All teams</span></div><div class="meta-item"><span class="label">Generated</span><span class="value">2026-06-19 18:47 AWST</span></div><div class="meta-item"><span class="label">Data mode</span><span class="value">Synthetic/demo sample data</span></div></div>
+    </header>
+    <section>
+        <h2>Executive Snapshot</h2>
+        <div class="metrics"><div class="metric-card"><span class="label">Games analysed</span><span class="value">6</span></div><div class="metric-card"><span class="label">Average margin</span><span class="value">19.0</span></div><div class="metric-card"><span class="label">Highest fixture-equity risk club</span><span class="value">Sydney</span></div><div class="metric-card"><span class="label">Highest travel-load club</span><span class="value">Brisbane</span></div><div class="metric-card"><span class="label">Highest commercial opportunity fixture</span><span class="value">Carlton v Collingwood</span></div><div class="metric-card"><span class="label">Highest fan-growth opportunity fixture</span><span class="value">Sydney v Carlton</span></div></div>
+    </section>
+    <section class="section">
+        <h2>Key Findings</h2>
+        <ol><li>Fixture equity risk appears concentrated among Sydney, Brisbane, Adelaide, mainly reflecting the public-data heuristic for short-break exposure, home-away balance and away-game sequences. This may warrant review alongside commercial, stadium and broadcast constraints.</li><li>Travel load appears highest for Brisbane, Sydney, Carlton, particularly where interstate trips, long-haul travel and shorter recovery windows overlap. Further internal review could combine this lens with player welfare, venue availability and broadcast considerations.</li><li>Home and away balance varies across clubs, with 2 clubs showing more away than home games in the filtered dataset. This public-data model should be considered alongside commercial, stadium and broadcast objectives before drawing firm conclusions.</li><li>Close-game frequency is currently estimated at 50%, while blowout frequency is estimated at 17%. This gives a starting point for assessing engagement windows and broadcast promotion opportunities.</li><li>This prototype uses public data only. Recommendations should be validated with internal AFL attendance, ticketing, broadcast, digital and operations data before decisions are made.</li></ol>
+    </section>
+    <section>
+        <h2>Priority Tables</h2>
+        <div class="table-grid">
+            <div class="section"><h2>Fixture equity risk</h2><table><thead><tr><th>Club</th><th>Risk score</th><th>Short breaks</th><th>Home-away diff</th></tr></thead><tbody><tr><td>Sydney</td><td>3.5</td><td>1</td><td>0</td></tr><tr><td>Brisbane</td><td>3</td><td>1</td><td>0</td></tr><tr><td>Adelaide</td><td>1.5</td><td>0</td><td>-1</td></tr><tr><td>Fremantle</td><td>1.5</td><td>0</td><td>-1</td></tr><tr><td>Carlton</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div>
+            <div class="section"><h2>Travel load</h2><table><thead><tr><th>Club</th><th>Travel score</th><th>Interstate away</th><th>Est. km</th></tr></thead><tbody><tr><td>Brisbane</td><td>5.1</td><td>1</td><td>2,747.9</td></tr><tr><td>Sydney</td><td>5.1</td><td>1</td><td>1,461.9</td></tr><tr><td>Carlton</td><td>2.6</td><td>1</td><td>1,425.8</td></tr><tr><td>Adelaide</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Collingwood</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div>
+            <div class="section"><h2>Commercial opportunity</h2><table><thead><tr><th>Fixture</th><th>Venue</th><th>Score</th><th>Category</th></tr></thead><tbody><tr><td>Carlton v Collingwood</td><td>MCG</td><td>70</td><td>Marquee commercial fixture</td></tr><tr><td>West Coast v Fremantle</td><td>Optus Stadium</td><td>64</td><td>Marquee commercial fixture</td></tr><tr><td>Port Adelaide v Adelaide</td><td>Adelaide Oval</td><td>41.4</td><td>Competitive balance showcase</td></tr><tr><td>Collingwood v Brisbane</td><td>MCG</td><td>30</td><td>Competitive balance showcase</td></tr><tr><td>Sydney v Carlton</td><td>SCG</td><td>29.2</td><td>Growth market opportunity</td></tr></tbody></table></div>
+            <div class="section"><h2>Fan-growth opportunity</h2><table><thead><tr><th>Fixture</th><th>Venue</th><th>Score</th><th>Category</th></tr></thead><tbody><tr><td>Sydney v Carlton</td><td>SCG</td><td>46.2</td><td>Growth market opportunity</td></tr><tr><td>Carlton v Collingwood</td><td>MCG</td><td>35</td><td>Marquee commercial fixture</td></tr><tr><td>Brisbane v Sydney</td><td>Gabba</td><td>31.2</td><td>Standard fixture</td></tr><tr><td>Port Adelaide v Adelaide</td><td>Adelaide Oval</td><td>30</td><td>Competitive balance showcase</td></tr><tr><td>Collingwood v Brisbane</td><td>MCG</td><td>25</td><td>Competitive balance showcase</td></tr></tbody></table></div>
+        </div>
+    </section>
+    <section class="section">
+        <h2>Competitive Balance Summary</h2>
+        <table><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody><tr><td>Games</td><td>6</td></tr><tr><td>Average margin</td><td>19</td></tr><tr><td>Median margin</td><td>14.5</td></tr><tr><td>Close-game rate</td><td>50%</td></tr><tr><td>Blowout rate</td><td>17%</td></tr></tbody></table>
+    </section>
+    <section class="caveat">
+        <strong>Methodology Caveat.</strong>
+        This brief is generated from public data and transparent heuristic scoring. It is intended to identify review priorities and demonstrate analytical thinking, not to reproduce official AFL fixture, commercial, attendance, broadcast or player-welfare models.
+    </section>
+    <section class="sources">
+        <h2>Data Sources</h2>
+        <ol><li>Generated from synthetic/demo sample dashboard data for portfolio demonstration.</li><li>Synthetic sample attendance CSV is included only to demonstrate attendance-context workflow.</li><li>Squiggle API for public fixture, result and ladder context.</li><li>Maintained public venue-capacity and market-context assumptions.</li></ol>
+        <h2>Limitations</h2>
+        <ol><li>This sample report does not contain official AFL attendance, ticketing, commercial or broadcast data.</li><li>Scores are transparent heuristics for review-priority ranking.</li><li>Travel distances use approximate public team and venue geography.</li><li>Venue capacities are maintained assumptions and may vary by event.</li><li>Internal AFL attendance, ticketing, broadcast, commercial, digital and player-welfare data would be needed for decision-grade modelling.</li></ol>
+    </section>
+</main>
+</body>
+</html>
