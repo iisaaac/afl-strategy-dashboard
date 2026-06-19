@@ -55,6 +55,8 @@ def test_parse_afl_tables_style_html() -> None:
 
     result = parse_afl_tables_crowds_html(html, 2025)
 
+    assert len(result) == 1
+    assert result.loc[0, "year"] == 2025
     assert result.loc[0, "crowd"] == 82000
     assert result.loc[0, "source"] == "AFL Tables public HTML"
 

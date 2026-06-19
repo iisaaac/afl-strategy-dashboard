@@ -124,7 +124,7 @@ def parse_afl_tables_crowds_html(html: str, year: int) -> pd.DataFrame:
         if crowd_col is None:
             continue
 
-        parsed = pd.DataFrame()
+        parsed = pd.DataFrame(index=table.index)
         parsed["year"] = year
         parsed["round"] = _optional_column(table, normalised_columns, ("round", "rnd"))
         parsed["date"] = _optional_column(table, normalised_columns, ("date",))
