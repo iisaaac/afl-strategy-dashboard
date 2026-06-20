@@ -11,6 +11,7 @@ from afl_strategy_dashboard.components.layout import (
     render_content_divider,
     render_dashboard_context,
     render_empty_state,
+    render_executive_takeaway,
     render_methodology_callout,
     render_page_header,
 )
@@ -42,6 +43,12 @@ def render(state: DashboardState) -> None:
     if travel_load.empty:
         render_empty_state("No travel rows", empty_state_text("team"))
         return
+
+    leader = travel_load.iloc[0]
+    render_executive_takeaway(
+        f"{leader['team']} has the highest visible travel-load signal, combining "
+        "interstate exposure, approximate distance and recovery-window context."
+    )
 
     metrics = [
         {
@@ -86,7 +93,6 @@ def render(state: DashboardState) -> None:
     )
     with st.expander("Full travel load data", expanded=False):
         st.dataframe(travel_load, use_container_width=True, hide_index=True)
-    leader = travel_load.iloc[0]
     render_interpretation(
         f"{leader['team']} has the highest visible travel-load score in the "
         "selected data. This may warrant further internal review with player "

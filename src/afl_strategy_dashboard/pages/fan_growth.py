@@ -11,6 +11,7 @@ from afl_strategy_dashboard.components.layout import (
     render_content_divider,
     render_dashboard_context,
     render_empty_state,
+    render_executive_takeaway,
     render_methodology_callout,
     render_page_header,
     render_section_header,
@@ -53,25 +54,47 @@ def render(state: DashboardState) -> None:
         render_empty_state("No opportunity rows", empty_state_text("chart"))
         return
 
+    top_commercial_fixture = top_fixture_label(
+        opportunities, "commercial_opportunity_score"
+    )
+    top_fan_growth_fixture = top_fixture_label(
+        opportunities, "fan_growth_opportunity_score"
+    )
+    render_executive_takeaway(
+        f"{top_commercial_fixture} leads the commercial opportunity signals, while "
+        f"{top_fan_growth_fixture} leads the fan-growth review priorities."
+    )
+
     utilisation = opportunities["estimated_capacity_utilisation"].dropna()
     regional_fixture_count = int(
         opportunities["regional_or_special_event_flag"].fillna(False).sum()
     )
+    attendance_enabled = state.controls.include_attendance
+    if not attendance_enabled:
+        utilisation_value = "Not enabled"
+        utilisation_subtitle = "Optional public attendance context"
+    elif utilisation.empty:
+        utilisation_value = "Unavailable"
+        utilisation_subtitle = "No matched attendance rows"
+    else:
+        utilisation_value = f"{utilisation.mean():.0%}"
+        utilisation_subtitle = "Matched attendance rows only"
+
     metrics = [
         {
             "title": "Top commercial fixture",
-            "value": top_fixture_label(opportunities, "commercial_opportunity_score"),
+            "value": top_commercial_fixture,
             "subtitle": "Venue and market-context score",
         },
         {
             "title": "Top fan-growth fixture",
-            "value": top_fixture_label(opportunities, "fan_growth_opportunity_score"),
+            "value": top_fan_growth_fixture,
             "subtitle": "Audience-growth lens",
         },
         {
             "title": "Average capacity utilisation",
-            "value": f"{utilisation.mean():.0%}" if not utilisation.empty else "n/a",
-            "subtitle": "Matched attendance rows only",
+            "value": utilisation_value,
+            "subtitle": utilisation_subtitle,
         },
         {
             "title": "Growth-market fixtures",

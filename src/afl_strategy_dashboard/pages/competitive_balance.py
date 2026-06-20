@@ -7,6 +7,7 @@ from afl_strategy_dashboard.components.charts import render_chart
 from afl_strategy_dashboard.components.layout import (
     render_content_divider,
     render_dashboard_context,
+    render_executive_takeaway,
     render_methodology_callout,
     render_page_header,
     render_section_header,
@@ -35,6 +36,11 @@ def render(state: DashboardState) -> None:
     )
     render_dashboard_context(state)
     summary = state.competitive_summary.iloc[0]
+    render_executive_takeaway(
+        f"Across {summary['games']:,.0f} completed games, the selected view records "
+        f"a {summary['close_game_rate']:.0%} close-game rate and a "
+        f"{summary['blowout_game_rate']:.0%} blowout rate."
+    )
     metrics = [
         {
             "title": "Completed games",

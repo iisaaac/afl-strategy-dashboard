@@ -8,6 +8,7 @@ from afl_strategy_dashboard.components.badges import badge_row
 from afl_strategy_dashboard.components.cards import render_kpi_grid
 from afl_strategy_dashboard.components.layout import (
     render_dashboard_context,
+    render_executive_takeaway,
     render_methodology_callout,
     render_page_header,
     render_section_header,
@@ -50,6 +51,12 @@ def render(state: DashboardState) -> None:
         unsafe_allow_html=True,
     )
     render_dashboard_context(state)
+    render_executive_takeaway(
+        f"{top_team_label(state.fixture_equity, 'fixture_equity_risk_score')} leads "
+        "the fixture-equity review priorities, while "
+        f"{top_team_label(state.travel_load, 'travel_load_score')} has the highest "
+        "visible travel-load signal in the selected season view."
+    )
 
     metrics = [
         {

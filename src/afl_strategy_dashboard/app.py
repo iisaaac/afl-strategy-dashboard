@@ -69,7 +69,7 @@ def main() -> None:
     register_dashboard_template()
     apply_custom_css()
 
-    year, refresh, use_sample = _render_primary_sidebar_controls()
+    year, refresh, use_sample, data_options = _render_primary_sidebar_controls()
     raw_games, ladder, data_note = load_dashboard_data(year, refresh, use_sample)
     selected_team = _render_team_filter(raw_games)
     attendance, attendance_note, controls = _render_secondary_sidebar_controls(
@@ -77,6 +77,7 @@ def main() -> None:
         refresh=refresh,
         use_sample=use_sample,
         selected_team=selected_team,
+        data_options=data_options,
     )
     state = build_dashboard_state(
         controls=controls,
@@ -99,7 +100,7 @@ def load_dashboard_data(
     return load_public_or_sample_data(year, refresh, use_sample)
 
 
-def _render_primary_sidebar_controls() -> tuple[int, bool, bool]:
+def _render_primary_sidebar_controls() -> tuple[int, bool, bool, object]:
     with st.sidebar:
         st.markdown(
             '<div class="afl-sidebar-heading">AFL Strategy Dashboard</div>',
@@ -111,18 +112,20 @@ def _render_primary_sidebar_controls() -> tuple[int, bool, bool]:
             index=1,
             help="Season to analyse.",
         )
-        use_sample = st.toggle(
-            "Use sample data",
-            value=False,
-            help="Use labelled synthetic data.",
-        )
-        refresh = st.toggle(
-            "Refresh cache",
-            value=False,
-            help="Fetch fresh public data.",
-            disabled=use_sample,
-        )
-    return year, refresh, use_sample
+        data_options = st.expander("Data options", expanded=False)
+        with data_options:
+            use_sample = st.toggle(
+                "Use sample data",
+                value=False,
+                help="Use labelled synthetic data.",
+            )
+            refresh = st.toggle(
+                "Refresh cache",
+                value=False,
+                help="Fetch fresh public data.",
+                disabled=use_sample,
+            )
+    return year, refresh, use_sample, data_options
 
 
 def _render_team_filter(games: pd.DataFrame) -> str:
@@ -148,6 +151,7 @@ def _render_secondary_sidebar_controls(
     refresh: bool,
     use_sample: bool,
     selected_team: str,
+    data_options,
 ) -> tuple[pd.DataFrame, str, DashboardControls]:
     with st.sidebar:
         completed_only = st.toggle(
@@ -165,7 +169,11 @@ def _render_secondary_sidebar_controls(
             index=0,
             help="Choose the fixture phase.",
         )
-        with st.expander("Attendance context", expanded=False):
+        with data_options:
+            st.markdown(
+                '<div class="afl-sidebar-subheading">Attendance context</div>',
+                unsafe_allow_html=True,
+            )
             include_attendance = st.toggle(
                 "Include attendance data",
                 value=False,

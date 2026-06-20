@@ -11,6 +11,7 @@ from afl_strategy_dashboard.components.layout import (
     render_content_divider,
     render_dashboard_context,
     render_empty_state,
+    render_executive_takeaway,
     render_methodology_callout,
     render_page_header,
 )
@@ -40,6 +41,13 @@ def render(state: DashboardState) -> None:
     if fixture_equity.empty:
         render_empty_state("No fixture equity rows", empty_state_text("team"))
         return
+
+    leader = fixture_equity.iloc[0]
+    render_executive_takeaway(
+        f"{leader['team']} has the highest visible fixture-equity review score, "
+        "with the ranking driven by public-data scheduling exposure rather than a "
+        "standalone fairness conclusion."
+    )
 
     metrics = [
         {
@@ -84,7 +92,6 @@ def render(state: DashboardState) -> None:
     )
     with st.expander("Full fixture equity data", expanded=False):
         st.dataframe(fixture_equity, use_container_width=True, hide_index=True)
-    leader = fixture_equity.iloc[0]
     render_interpretation(
         f"{leader['team']} has the highest visible fixture equity risk score in "
         "the selected data. The score is a review-priority signal and should be "

@@ -8,10 +8,10 @@ import plotly.io as pio
 DASHBOARD_TEMPLATE_NAME = "afl_strategy_dashboard"
 CHART_COLOURWAY = [
     "#0B1F3A",
-    "#C8A24A",
+    "#7A5E12",
     "#1F7A5C",
     "#2F5D7C",
-    "#B7791F",
+    "#805411",
     "#A33A3A",
     "#5B6472",
 ]

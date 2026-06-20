@@ -122,6 +122,21 @@ def render_dashboard_context(state) -> None:
     )
 
 
+def build_executive_takeaway_html(text: str) -> str:
+    """Build escaped HTML for a concise executive takeaway."""
+    return (
+        '<div class="executive-takeaway">'
+        '<span class="executive-takeaway-label">Executive takeaway</span>'
+        f'<span class="executive-takeaway-text">{escape(text)}</span>'
+        "</div>"
+    )
+
+
+def render_executive_takeaway(text: str) -> None:
+    """Render a one-sentence interpretation immediately below dashboard context."""
+    st.markdown(build_executive_takeaway_html(text), unsafe_allow_html=True)
+
+
 def _compact_data_source(data_note: str) -> str:
     note = data_note.lower()
     if "synthetic" in note or "sample" in note:

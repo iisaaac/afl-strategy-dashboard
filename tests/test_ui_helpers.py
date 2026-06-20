@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from afl_strategy_dashboard.components import cards
 from afl_strategy_dashboard.components.badges import (
     badge_html,
     format_opportunity_badge,
@@ -9,6 +10,7 @@ from afl_strategy_dashboard.components.badges import (
 )
 from afl_strategy_dashboard.components.layout import (
     build_context_strip_html,
+    build_executive_takeaway_html,
     empty_state_text,
 )
 from afl_strategy_dashboard.components.tables import (
@@ -86,6 +88,29 @@ def test_context_strip_html_escapes_values_and_compacts_status() -> None:
     assert "Home-and-away &lt;season&gt;" in html
     assert "All teams &amp; clubs" in html
     assert "<season>" not in html
+
+
+def test_executive_takeaway_html_escapes_dynamic_text() -> None:
+    html = build_executive_takeaway_html("Review <club> & venue exposure.")
+
+    assert "executive-takeaway" in html
+    assert "Executive takeaway" in html
+    assert "Review &lt;club&gt; &amp; venue exposure." in html
+    assert "<club>" not in html
+
+
+def test_primary_metric_card_uses_hierarchy_class(monkeypatch) -> None:
+    calls: list[tuple[str, bool]] = []
+
+    def fake_markdown(html: str, unsafe_allow_html: bool = False) -> None:
+        calls.append((html, unsafe_allow_html))
+
+    monkeypatch.setattr(cards.st, "markdown", fake_markdown)
+
+    cards.render_metric_card("Priority", "Club", primary=True)
+
+    assert "afl-metric-card--primary" in calls[0][0]
+    assert calls[0][1] is True
 
 
 def test_average_margin_label_handles_missing_summary() -> None:

@@ -29,7 +29,7 @@ def apply_custom_css() -> None:
             color: {PALETTE["text"]};
         }}
         .block-container {{
-            padding-top: 1.25rem;
+            padding-top: 0.8rem;
             padding-bottom: 3rem;
             max-width: 1320px;
         }}
@@ -38,14 +38,14 @@ def apply_custom_css() -> None:
             letter-spacing: 0;
         }}
         .afl-page-header {{
-            padding: 1.25rem 0 0.85rem;
+            padding: 0.9rem 0 0.65rem;
             border-bottom: 1px solid {PALETTE["border"]};
             margin-top: 0;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.55rem;
             overflow: visible;
         }}
         .afl-page-header h1 {{
-            font-size: 2.25rem;
+            font-size: 2.15rem;
             line-height: 1.1;
             margin: 0 0 0.45rem;
         }}
@@ -61,7 +61,7 @@ def apply_custom_css() -> None:
             font-size: 0.78rem;
             font-weight: 700;
             line-height: 1.35;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.42rem;
             overflow: visible;
             text-transform: uppercase;
             letter-spacing: 0.12em;
@@ -72,6 +72,14 @@ def apply_custom_css() -> None:
             font-weight: 760;
             margin: 0.2rem 0 0.4rem;
         }}
+        .afl-sidebar-subheading {{
+            color: {PALETTE["primary"]};
+            font-size: 0.78rem;
+            font-weight: 760;
+            margin: 0.45rem 0 0.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }}
         [data-testid="stSidebar"] [data-testid="stVerticalBlock"] {{
             gap: 0.45rem;
         }}
@@ -79,8 +87,13 @@ def apply_custom_css() -> None:
         [data-testid="stSidebar"] p {{
             font-size: 0.84rem;
         }}
+        [data-testid="stSidebar"] [data-testid="stExpander"] {{
+            background: rgba(255, 255, 255, 0.55);
+            border-color: {PALETTE["border"]};
+            border-radius: 8px;
+        }}
         .afl-section-header {{
-            margin: 1.4rem 0 0.65rem;
+            margin: 1rem 0 0.55rem;
         }}
         .afl-section-header h2 {{
             font-size: 1.2rem;
@@ -104,7 +117,7 @@ def apply_custom_css() -> None:
             height: 1.55rem;
         }}
         .afl-chart-spacer {{
-            height: 0.75rem;
+            height: 0.55rem;
         }}
         .afl-content-divider {{
             border-top: 1px solid {PALETTE["border"]};
@@ -114,11 +127,17 @@ def apply_custom_css() -> None:
         .afl-card {{
             background: {PALETTE["surface"]};
             border: 1px solid {PALETTE["border"]};
-            border-radius: 8px;
-            padding: 1rem;
+            border-radius: 10px;
+            padding: 0.82rem 0.9rem;
             box-shadow: 0 1px 2px rgba(11, 31, 58, 0.04);
-            min-height: 130px;
-            margin-bottom: 0.75rem;
+            min-height: 112px;
+            margin-bottom: 0.55rem;
+        }}
+        .afl-metric-card--primary {{
+            background: linear-gradient(180deg, #FBF7EC 0%, #FFFFFF 42%);
+            border-color: #D8C58F;
+            border-top: 3px solid {PALETTE["accent"]};
+            box-shadow: 0 3px 10px rgba(11, 31, 58, 0.07);
         }}
         .afl-card-title {{
             color: {PALETTE["muted"]};
@@ -132,7 +151,7 @@ def apply_custom_css() -> None:
             font-size: 1.55rem;
             font-weight: 760;
             line-height: 1.2;
-            margin-top: 0.45rem;
+            margin-top: 0.35rem;
             overflow-wrap: anywhere;
         }}
         .afl-card-subtitle,
@@ -140,7 +159,15 @@ def apply_custom_css() -> None:
         .afl-card-status {{
             color: {PALETTE["muted"]};
             font-size: 0.92rem;
-            margin-top: 0.45rem;
+            margin-top: 0.35rem;
+        }}
+        [data-testid="stPlotlyChart"] {{
+            background: {PALETTE["surface"]};
+            border: 1px solid {PALETTE["border"]};
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(11, 31, 58, 0.05);
+            overflow: hidden;
+            padding: 0.2rem 0.35rem;
         }}
         .executive-table-wrap {{
             width: 100%;
@@ -250,7 +277,7 @@ def apply_custom_css() -> None:
             display: flex;
             flex-wrap: wrap;
             gap: 0.45rem;
-            margin: 0.6rem 0 1rem;
+            margin: 0.35rem 0 0.65rem;
         }}
         .afl-badge {{
             display: inline-flex;
@@ -318,7 +345,7 @@ def apply_custom_css() -> None:
             gap: 0.55rem 0.9rem;
             align-items: center;
             max-width: 1040px;
-            margin: 0 0 1rem;
+            margin: 0 0 0.6rem;
             padding: 0.62rem 0.82rem;
             background: {PALETTE["surface"]};
             border: 1px solid {PALETTE["border"]};
@@ -337,12 +364,43 @@ def apply_custom_css() -> None:
             color: {PALETTE["primary"]};
             font-weight: 700;
         }}
+        .executive-takeaway {{
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            margin: 0 0 0.75rem;
+            padding: 0.65rem 0.8rem;
+            background: #FBF7EC;
+            border: 1px solid #E1D2A8;
+            border-left: 4px solid {PALETTE["accent"]};
+            border-radius: 8px;
+        }}
+        .executive-takeaway-label {{
+            flex: 0 0 auto;
+            color: {PALETTE["accent"]};
+            font-size: 0.72rem;
+            font-weight: 760;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }}
+        .executive-takeaway-text {{
+            color: {PALETTE["text"]};
+            font-size: 0.9rem;
+            line-height: 1.35;
+        }}
         @media (max-width: 900px) {{
             .executive-detail-grid {{
                 grid-template-columns: 1fr;
             }}
             .context-strip {{
                 max-width: 100%;
+            }}
+            .executive-takeaway {{
+                display: block;
+            }}
+            .executive-takeaway-label {{
+                display: block;
+                margin-bottom: 0.25rem;
             }}
         }}
         .afl-empty-title {{
