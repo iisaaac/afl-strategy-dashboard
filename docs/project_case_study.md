@@ -26,7 +26,11 @@ Scores are transparent heuristics for review-priority ranking. The project does 
 
 ## Future Enhancements
 
-Potential extensions include publishing the prepared Streamlit Community Cloud deployment, PDF export if a reliable dependency is available, broader public attendance history, versioned venue-capacity assumptions, AFLW support where suitable public data exists, and an optional portfolio landing page.
+The next analytical priority is a focused public attendance and venue-utilisation
+feature, subject to source terms and data quality. Later work could separate
+retrospective opportunity analysis from time-valid pre-fixture planning, version
+venue-capacity assumptions, add AFLW support where suitable public data exists and
+add PDF export only if a reliable dependency is justified.
 
 ## AFL Graduate Program Relevance
 

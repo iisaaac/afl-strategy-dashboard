@@ -171,17 +171,10 @@ def _render_secondary_sidebar_controls(
                 value=False,
                 help="Merge optional public or sample crowd data.",
             )
-            attendance_path = st.text_input(
-                "Attendance CSV path",
-                value="",
-                placeholder="data/raw/sample_attendance.csv",
-                help="Local CSV path.",
-                disabled=not include_attendance,
-            )
             attendance_upload = st.file_uploader(
-                "Upload attendance CSV",
+                "Upload public attendance CSV",
                 type=["csv"],
-                help="Upload a public/local CSV.",
+                help="Upload a public-data CSV you are authorised to use.",
                 disabled=not include_attendance,
             )
             use_sample_attendance = st.toggle(
@@ -199,7 +192,6 @@ def _render_secondary_sidebar_controls(
 
     attendance, attendance_note = load_attendance_context(
         include_attendance=include_attendance,
-        attendance_path=attendance_path,
         attendance_upload=attendance_upload,
         use_sample_attendance=use_sample_attendance,
     )
@@ -219,7 +211,6 @@ def _render_secondary_sidebar_controls(
 def load_attendance_context(
     *,
     include_attendance: bool,
-    attendance_path: str,
     attendance_upload,
     use_sample_attendance: bool,
 ) -> tuple[pd.DataFrame, str]:
@@ -232,9 +223,6 @@ def load_attendance_context(
             text = attendance_upload.getvalue().decode("utf-8")
             attendance = clean_attendance_dataframe(pd.read_csv(StringIO(text)))
             return attendance, "Using uploaded attendance CSV data."
-        if attendance_path.strip():
-            attendance = load_attendance_csv(attendance_path.strip())
-            return attendance, f"Using attendance CSV: {attendance_path.strip()}"
         if use_sample_attendance:
             sample_path = Path("data/raw/sample_attendance.csv")
             attendance = load_attendance_csv(sample_path)

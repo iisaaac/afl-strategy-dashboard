@@ -57,9 +57,11 @@ After deployment, open the public app URL and check:
 5. Export Brief previews the brief and provides HTML and Markdown downloads.
 6. Methodology communicates public-data caveats clearly.
 
-## README Live Demo Link
+## Live Deployment
 
-After deployment, replace `Live demo: coming soon` in `README.md` with the public Streamlit app URL.
+The public application is available at
+<https://afl-strategy-dashboard.streamlit.app/>. After a release, verify both the
+default 2025 recruiter view and the current-season path.
 
 ## Checklist
 
@@ -70,4 +72,4 @@ After deployment, replace `Live demo: coming soon` in `README.md` with the publi
 5. Set Python version to match local development where possible.
 6. Optionally set `AFL_DASHBOARD_USER_AGENT` as a secret/environment variable.
 7. Test Overview, Fixture Equity, Travel Load, Fan Growth & Commercial, Export Brief.
-8. Copy live URL into README.
+8. Confirm the README live URL and screenshots still match the released interface.

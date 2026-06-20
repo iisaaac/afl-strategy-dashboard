@@ -73,6 +73,14 @@ def render(state: DashboardState) -> None:
             "timing, large-market teams and regional or special-event context.",
         ),
         (
+            "Retrospective And Forward-Looking Use",
+            "For completed fixtures, realised margins, attendance utilisation and "
+            "the available ladder state are retrospective signals. They were not "
+            "necessarily known before the fixture and must not be presented as a "
+            "pre-fixture forecast. A planning model would require time-stamped "
+            "inputs and an explicit as-at date to avoid hindsight leakage.",
+        ),
+        (
             "Attendance-Context Workflow",
             "Attendance data is optional and local-first. When present, it is cleaned "
             "and merged onto fixtures to support utilisation views. When absent, "

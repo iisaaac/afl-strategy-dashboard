@@ -50,7 +50,8 @@ This project only uses data that is publicly available. It should not be extende
 
 ## Attendance Context
 
-Attendance context is optional and local-first. Users can load a CSV with:
+Attendance context is optional and upload-first. Users can upload a public-data CSV
+through the dashboard with:
 
 ```text
 year
@@ -97,5 +98,8 @@ export AFL_DASHBOARD_USER_AGENT="your-name-afl-strategy-dashboard/0.1"
 ```
 
 For Streamlit Community Cloud, set `AFL_DASHBOARD_USER_AGENT` as an optional secret or environment variable. Do not commit `.streamlit/secrets.toml`.
+
+The public interface does not accept arbitrary server-side file paths. Attendance
+context is supplied through an in-memory CSV upload or the labelled synthetic sample.
 
 Local caching is used to avoid unnecessary repeated requests.

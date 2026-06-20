@@ -27,3 +27,6 @@ jobs:
 
       - name: Run tests
         run: python -m pytest
+
+      - name: Run deployment smoke check
+        run: python scripts/smoke_check.py

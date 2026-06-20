@@ -25,9 +25,9 @@ def test_readme_does_not_include_local_absolute_paths() -> None:
 
 
 def test_deployed_export_page_has_no_development_only_controls() -> None:
-    export_page = Path(
-        "src/afl_strategy_dashboard/pages/export_brief.py"
-    ).read_text(encoding="utf-8")
+    export_page = Path("src/afl_strategy_dashboard/pages/export_brief.py").read_text(
+        encoding="utf-8"
+    )
 
     assert "Local development only" not in export_page
     assert "outputs/reports" not in export_page

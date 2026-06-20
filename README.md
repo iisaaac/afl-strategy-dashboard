@@ -35,10 +35,11 @@ The dashboard shows how public data can be shaped into a transparent strategy pr
 
 ## Live Demo
 
-Live demo: coming soon
+[Open the live AFL Strategy & Fan Growth Analytics Dashboard](https://afl-strategy-dashboard.streamlit.app/)
 
-This app is deployment-ready for Streamlit Community Cloud. Once deployed, replace
-this line with the public app URL.
+The public deployment defaults to the completed 2025 season so recruiters see a
+stable, fully populated analysis. Live Squiggle data and labelled synthetic sample
+data remain available through the sidebar controls.
 
 Run locally:
 
@@ -91,7 +92,7 @@ sidebar filters and active attendance-context settings.
 
 ## Dashboard Preview
 
-Screenshots should be captured after running the app in sample-data mode. Planned screenshot paths:
+The repository includes stable sample-data screenshots:
 
 ![Dashboard overview](docs/assets/screenshots/01_overview.png)
 
@@ -242,13 +243,13 @@ The included sample attendance file is synthetic demo data. It is not official A
 
 ## Roadmap
 
-- Deploy publicly on Streamlit Community Cloud and replace the live demo placeholder.
-- Add PDF export if a safe and reliable dependency is available.
-- Add richer public attendance history where licensing permits.
+- Add a focused public attendance and venue-utilisation feature where source terms
+  and data quality support responsible reuse.
+- Separate retrospective opportunity analysis from any future pre-fixture planning
+  view, with time-valid inputs and explicit labels.
+- Add PDF export only if a safe and reliable dependency is justified.
 - Version venue-capacity and venue-context assumptions.
-- Add optional Next.js portfolio landing page.
 - Explore broader AFLW support if suitable public data is available.
-- Add exportable image assets for README and application materials.
 
 ## Resume Bullet
 

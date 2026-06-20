@@ -58,6 +58,22 @@ The fixture equity risk score is a transparent heuristic. It increases with:
 
 The score is designed to rank public-data review priorities. It is not a definitive fairness judgement.
 
+The implemented weighting is:
+
+```text
+2.0 x short-break games
++ 1.5 x five-day breaks
++ 1.0 x six-day breaks
++ 1.5 x away-game imbalance (away games above home games only)
++ 1.0 x away-run games above the first consecutive away game
++ 2.0 x interstate-away-run games above the first consecutive game
+```
+
+Five-day and six-day breaks are subsets of short breaks, so their additional terms
+deliberately give those exposures more weight. The score is unbounded and should be
+used for ranking within a comparable fixture selection, not as a percentage or an
+absolute risk scale.
+
 ## Travel Load
 
 Travel load uses public team and venue geography:
@@ -70,6 +86,19 @@ Travel load uses public team and venue geography:
 - Short-break-after-interstate-trip exposure is flagged when the team plays again fewer than seven days after an interstate trip.
 
 The travel load score is a transparent heuristic. It increases with interstate away games, home-listed interstate games, long-haul trips, short breaks after interstate travel and total estimated travel kilometres.
+
+The implemented weighting is:
+
+```text
+2.0 x interstate away games
++ 1.0 x home-listed interstate games
++ 2.0 x long-haul trips
++ 2.5 x short breaks after an interstate trip
++ estimated return kilometres / 2,500
+```
+
+The score is unbounded and supports relative ranking within a comparable selection;
+it is not a player-welfare or fatigue scale.
 
 This does not estimate actual flight routing, time zones, travel day timing, recovery quality or player welfare impact. Like fixture equity, this view should generally be interpreted using the home-and-away season filter.
 
@@ -98,9 +127,15 @@ Fixture attractiveness is a heuristic score based on public fixture fields:
 
 Scores are designed to rank fixtures for further investigation, not to replace attendance, ticketing, broadcast or digital engagement data.
 
+The fixture-attractiveness score has a maximum of 100 points: rivalry (30), prime
+timing (20), major stadium (15), close-game or balanced-probability signal (15),
+top-four ladder/form signal (10), and at least 75% estimated utilisation (10).
+
 ## Attendance And Venue Utilisation
 
-Attendance context is optional. The dashboard can merge local CSV crowd data onto normalised fixtures using year, teams, venue and date where available. Match confidence is labelled as high, medium, low or unmatched.
+Attendance context is optional. The dashboard can merge an uploaded public-data CSV
+onto normalised fixtures using year, teams, venue and date where available. Match
+confidence is labelled as high, medium, low or unmatched.
 
 Estimated capacity utilisation is calculated as:
 
@@ -142,6 +177,11 @@ The fan-growth opportunity score is a transparent heuristic that increases with:
 
 This score is intended to identify fixtures that may warrant deeper internal review for audience, attendance, community or participation objectives.
 
+The score adds 25% of fixture attractiveness, growth-market context (25), regional
+or special-event context (20), a competitive profile (15), estimated utilisation
+below 65% (15), and prime timing (10). Its theoretical maximum is 110. It is a
+ranking index, not a probability or percentage.
+
 ## Commercial Opportunity Score
 
 The commercial opportunity score is a transparent heuristic that increases with:
@@ -155,11 +195,30 @@ The commercial opportunity score is a transparent heuristic that increases with:
 
 The score is not an official revenue forecast and does not use ticketing, sponsorship, broadcast contract or internal commercial data.
 
+The score adds approximate capacity divided by 2,500, capped at 25 points; estimated
+utilisation of at least 75% (20); rivalry context (15); prime timing (15); five
+points for each listed large-market team; and regional or special-event context
+(10). Its theoretical maximum is 95. The maintained team grouping is a modelling
+assumption, not an official AFL market classification.
+
+## Retrospective And Forward-Looking Use
+
+For completed fixtures, the competitive signal can use the realised match margin
+and the ladder input can reflect a later season state. Attendance utilisation is
+also observed after the event. These are retrospective descriptive inputs and must
+not be presented as information that was available before the fixture.
+
+For incomplete fixtures, the model can use public probability fields where present,
+but it remains a simple heuristic rather than a forecast. A decision-grade planning
+version would require time-stamped ladder/form inputs, documented prediction
+provenance and a strict as-at date to avoid hindsight leakage.
+
 ## Limitations
 
 - Public data is incomplete for internal AFL business decisions.
 - Venue and team geography mappings need ongoing maintenance.
 - The scoring model is transparent but simple.
+- Scores use different scales and should not be compared directly with one another.
 - Executive brief exports reflect the current dashboard filters and are not versioned decision records.
 - Internal AFL attendance, ticketing, broadcast, stadium operations and player welfare data would be needed for decision-grade modelling.
 - Crowd size alone is not treated as the only measure of strategic value because regional, community, participation and growth-market objectives may matter even when crowd scale is modest.
